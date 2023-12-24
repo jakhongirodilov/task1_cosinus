@@ -41,7 +41,7 @@ django_project/
 
 1. **Clone the Repository:**
    ```bash
-   git clone <repository_url>
+   git clone git@github.com:jakhongirodilov/task1_cosinus.git
    cd task1
    
 2. **Install Dependencies:**
