@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock title %}
+
+{% block content %}
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card">
+            {% if user.avatar %}
+                <img src="{{ user.avatar.url }}" class="card-img-top" alt="{{ user.username }}'s Avatar">
+            {% else %}
+                <img src="https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=
+" class="card-img-top" alt="{{ user.username }}'s Avatar">
+            {% endif %}
+            <div class="card-body text-center">
+                <h5 class="card-title">{{ user.get_full_name }}</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title mb-4">My Profile</h2>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Username: {{ user.username }}</li>
+                    <li class="list-group-item">First name: {{ user.first_name }}</li>
+                    <li class="list-group-item">Last name: {{ user.last_name }}</li>
+                    <li class="list-group-item">Phone Number: {{ user.phone_number }}</li>
+                    <li class="list-group-item">Email: {{ user.email }}</li>
+                </ul>
+                <div class="mt-4">
+                    <a href="{% url 'my_products' %}" class="btn btn-primary">My Products</a>
+                    <a href="{% url 'profile_update'%}" class="btn btn-info">Update Profile</a>
+                    <a href="{% url 'password_change'%}" class="btn btn-secondary">Change Password</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

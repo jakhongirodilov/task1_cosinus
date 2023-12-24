@@ -1,0 +1,28 @@
+
+{% extends "base.html" %}
+{% block title %}My Products{% endblock title %}
+
+{% block content %}
+    {% if my_products %}
+        <div class="row">
+            {% for product in my_products %}
+                <div class="col-md-3 mb-3">
+                    <div class="card" style="width: 18rem;">
+                        {% if product.image %}
+                            <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap" style="object-fit: cover; height: 200px;">
+                        {% else %}
+                            <img src="media/images/default.png">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">Price: ${{ product.price }}</p>
+                            <a href="{% url 'product' id=product.id %}" class="btn btn-primary">Details</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p style="text-align: center">You have not posted any products yet...</p>
+    {% endif %}
+{% endblock content %}
